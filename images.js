@@ -39,11 +39,18 @@ function component(width, height, color, x, y, type) {
     this.speedY = 0;
     this.x = x;
     this.y = y;
+    this.angry=0;
     // Declaration of function update
     this.update = function() {
         ctx = myGameArea.context;
         // Option to draw the component as an image or as a square with a color
         if (type == "image") {
+            if(this.angry>0){
+                this.image.src="angry.gif";
+                this.angry--;
+            }else{
+                this.image.src="smiley.gif";
+            }
             ctx.drawImage(this.image,
                 this.x,
                 this.y,
@@ -62,10 +69,12 @@ function component(width, height, color, x, y, type) {
             if (this.x >= canvasWidth - (this.width) || this.x <= 0) {
                 //TODO: make the image bounce back when reaching the edges
                 this.speedX*=-1;
+                this.angry=100;
             }
             if (this.y >= canvasHeight - (this.height) || this.y <= 0) {
                 //TODO: make the image bounce back when reaching the edges
                 this.speedY*=-1;
+                this.angry=100;
             }
         }
     }
