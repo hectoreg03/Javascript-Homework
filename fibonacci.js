@@ -10,7 +10,7 @@ function fibonacci() {
     var n = document.getElementById("num").value;
     var val = f(n);
     document.getElementById("fibonacciLbl").textContent = val;
-    return f;
+    return val;
 }
 
 function f(n) {
@@ -28,11 +28,10 @@ function f(n) {
                 break;
             default:
                 value= f(n-1)+f(n-2);
-
         }
         memo[n] = value;
     }
 
     return value;
 }
-console.log(fibonacci(15));
+console.log(f(15));

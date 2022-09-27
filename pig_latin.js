@@ -2,9 +2,10 @@
 Pig Latin
 */
 
-function igpayAtinlay(str) {
+function igpayAtinlay() {
+
     var returnArray = [],
-        wordArray = str.split(' ');
+        wordArray = document.getElementById("phrase").value.split(' ');
 
     for (var i = 0; i < wordArray.length; i++) {
         var word = wordArray[i];
@@ -25,7 +26,11 @@ function igpayAtinlay(str) {
 
         returnArray.push(word.substr(beginning.length) + beginning + 'ay');
     }
-    return returnArray.join(' ');
+    var returnPhrase="";
+    for ( var i=0; i<returnArray.length; i++){
+        returnPhrase+=returnArray[i]+" ";
+    }
+    document.getElementById("pig_LatinLbl").textContent = returnPhrase;
 }
 
 console.log(igpayAtinlay("pizza")); // "izzapay"
